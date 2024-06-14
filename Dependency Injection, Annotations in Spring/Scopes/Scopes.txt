@@ -1,0 +1,43 @@
+Bean Scopes in Spring
+
+Spring supports several bean scopes, each defining the lifecycle and visibility of a bean within the Spring container. Here are the different bean scopes supported by Spring:
+
+1. Singleton
+	Description: The default scope. Spring container creates exactly one instance of the bean, and all requests for the bean return the same instance.
+	Scenario: Use when you need a shared instance, such as a configuration manager or a database connection pool.
+
+XML Configuration:
+
+<bean id="myBean" class="com.example.MyBean" scope="singleton"/>
+
+2. Prototype
+	Description: A new instance of the bean is created each time it is requested from the Spring container.
+	Scenario: Use when you need a unique instance, such as when working with stateful beans or temporary objects.
+
+XML Configuration:
+
+	<bean id="myBean" class="com.example.MyBean" scope="prototype"/>
+
+
+3. Request
+	Description: A new instance of the bean is created for each HTTP request. This scope is only valid in a web-aware Spring application context.
+	Scenario: Use when a bean should be request-scoped, such as request-specific data or a user session handler.
+
+XML Configuration:
+
+<bean id="myBean" class="com.example.MyBean" scope="request"/>
+
+4. Session
+	Description: A new instance of the bean is created for each HTTP session. This scope is only valid in a web-aware Spring application context.
+	Scenario: Use when you need to store user-specific data, such as user preferences or shopping cart data.
+
+XML Configuration:
+
+	<bean id="myBean" class="com.example.MyBean" scope="session"/>
+5. Global Session
+	Description: A new instance of the bean is created for each global HTTP session. This is used in portlet-based applications.
+	Scenario: Use when working in a portlet environment and need to share data across different portlets.
+
+XML Configuration:
+
+	<bean id="myBean" class="com.example.MyBean" scope="globalSession"/>

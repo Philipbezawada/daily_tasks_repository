@@ -1,0 +1,132 @@
+````````````````
+Annotations in Spring:
+Discuss the usage of annotations like @Component, @Autowired, @Qualifier, and @Scope in Spring. Provide examples of how these annotations are used to configure Spring beans and manage dependencies without XML configuration.
+
+`````````````````
+Annotations in Spring
+	Spring provides several annotations that can be used to configure beans and manage dependencies, reducing 	or eliminating the need for XML configuration.
+
+1. @Component
+	Description: Indicates that an annotated class is a "component". Such classes are considered as candidates 	for auto-detection when using annotation-based configuration and classpath scanning.
+Usage:
+	@Component
+	public class UserService {
+   	 public void performService() {
+        	System.out.println("Performing user service...");
+    	}
+	}
+2. @Autowired
+	Description: Marks a constructor, field, setter method, or config method as to be autowired by Spring's 	dependency injection facilities.
+Usage:
+
+	@Component
+	public class UserController {
+    	private final UserService userService;
+
+   	 @Autowired
+    	public UserController(UserService userService) {
+        	this.userService = userService;
+   	 }
+	}
+3. @Qualifier
+	Description: Used alongside @Autowired to specify which bean should be injected when there are multiple 	candidates.
+Usage:
+	@Component
+	public class UserController {
+    	private final UserService userService;
+
+    	@Autowired
+    	public UserController(@Qualifier("specificUserService") UserService userService) {
+        	this.userService = userService;
+    	}
+	}
+4. @Scope
+Description: Specifies the scope of a bean.
+Usage:
+	@Component
+	@Scope("prototype")
+	public class UserService {
+    	public void performService() {
+        	System.out.println("Performing user service...");
+    	}
+	}
+
+
+Example Configuration without XML
+
+	Here's an example demonstrating the use of these annotations in a Spring application:
+
+UserService.java:
+
+	package com.example;
+
+	import org.springframework.stereotype.Component;
+
+	@Component
+	public class UserService {
+    	public void performService() {
+        	System.out.println("Performing user service...");
+    	}
+	}
+UserRepository.java:
+
+	package com.example;
+
+	import org.springframework.stereotype.Component;
+
+	@Component
+	public class UserRepository {
+    		public void getData() {
+        		System.out.println("Fetching data from repository...");
+    	}
+	}
+
+UserController.java:
+
+	package com.example;
+
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.beans.factory.annotation.Qualifier;
+	import org.springframework.stereotype.Component;
+
+	@Component
+	public class UserController {
+   	private final UserService userService;
+
+    	@Autowired
+    	public UserController(@Qualifier("userService") UserService userService) {
+        	this.userService = userService;
+    	}
+
+    	public void handleRequest() {
+        	userService.performService();
+    	}
+	}
+
+
+AppConfig.java:
+
+	package com.example;
+
+	import org.springframework.context.annotation.ComponentScan;
+	import org.springframework.context.annotation.Configuration;
+
+	@Configuration
+	@ComponentScan(basePackages = "com.example")
+	public class AppConfig {
+	}
+
+Main.java:
+
+	package com.example;
+
+	import org.springframework.context.ApplicationContext;
+	import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+	public class Main {
+	    public static void main(String[] args) {
+        	ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+	        UserController userController = context.getBean(UserController.class);
+        	userController.handleRequest();
+    }
+}
