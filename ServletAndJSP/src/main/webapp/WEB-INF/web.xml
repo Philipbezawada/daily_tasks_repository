@@ -1,0 +1,19 @@
+<web-app>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>VisitorCounterServlet</servlet-name>
+        <servlet-class>VisitorCounterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VisitorCounterServlet</servlet-name>
+        <url-pattern>/VisitorCounterServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
