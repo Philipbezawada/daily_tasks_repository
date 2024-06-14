@@ -1,3 +1,8 @@
+````````````
+Bean Scopes:
+Explain the different bean scopes supported by Spring (singleton, prototype, request, session, etc.). Describe each scope and provide an example scenario where each scope would be appropriate. Show how to define bean scopes using XML configuration.
+
+`````
 Bean Scopes in Spring
 
 Spring supports several bean scopes, each defining the lifecycle and visibility of a bean within the Spring container. Here are the different bean scopes supported by Spring:
