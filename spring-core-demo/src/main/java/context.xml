@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context = "http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!-- @Autowired , @Component Configurations -->
+<bean id="stu" class="com.Autowiring.Student">
+    <property name="Address" value="Bangalore"/>
+
+</bean>
+</beans>
+
+
+
+<!-- ``` Setter Injection ```
+    <context:component-scan base-package="com.setter"/>
+    
+    <bean id="stu" class="com.setter.StudentBean">
+        <property name="stid" value="100"/>
+        <property name="stname" value="Philip"/>
+    </bean> -->
+
+<!-- constructor Injection -->
+<!-- <context:component-scan base-package="com.constructor"/> -->
+<!-- <bean id="stu" class="com.constructor.Student">
+    <constructor-arg name="stid" value="10"/>
+    <constructor-arg name="stname" value="philip"/>
+    <constructor-arg name="address">
+        <map>
+            <entry key="city" value="Guntur"/>
+            <entry key="state" value="Andhra Pradesh"/>
+            <entry key="country" value="India"/>
+        </map>
+    </constructor-arg>
+</bean> -->
