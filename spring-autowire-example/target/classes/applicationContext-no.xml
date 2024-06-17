@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="employee" class="com.autowire.model.Employee">
+        <property name="name" value="Charlie"/>
+    </bean>
+
+    <bean id="department" class="com.autowire.model.Department">
+        <property name="name" value="Sales"/>
+    </bean>
+
+    <bean id="employeeService4" class="com.autowire.service.EmployeeService">
+        <property name="employee" ref="employee"/>
+        <property name="department" ref="department"/>
+    </bean>
+</beans>
